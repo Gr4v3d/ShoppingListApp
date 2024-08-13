@@ -1,0 +1,1 @@
+﻿//sqlite-net-pcl do obsługi bazy danych

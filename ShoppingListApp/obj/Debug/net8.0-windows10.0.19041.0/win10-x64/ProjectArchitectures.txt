@@ -1,0 +1,1 @@
+C:\Users\Piegzon\source\repos\ShoppingListApp\ShoppingListApp\ShoppingListApp.csproj;x64

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewModels="clr-namespace:MauiApp2.ViewModel"
+             
+             x:Class="MauiApp2.View.DishesView"
+             Title="DishesView">
+    
+    <ContentPage.BindingContext>
+        <viewModels:DishViewModel/>
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout>
+        <CollectionView ItemsSource="{Binding Dishes}"
+                        SelectedItem="{Binding SelectedDish, Mode=TwoWay}"
+                        SelectionMode="Single"
+                        SelectionChangedCommand="{Binding ClearPortionSize}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <HorizontalStackLayout>
+                        <Label Text="{Binding DishId}"/>
+                        <Label Text="{Binding DishName}"/>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="Wybrane danie:" Grid.Row="0" Grid.Column="0"/>
+            <Label Text="Rozmiar Porcji " Grid.Row="0" Grid.Column="1"/>
+            <Label Text="{Binding SelectedDish.DishName}" Grid.Row="1" Grid.Column="0"/>
+            <Entry Text="{Binding PortionSize}" Grid.Row="1" Grid.Column="1"/>
+        </Grid>
+        <Button Text="Dodaj danie do listy zakupów" Command="{Binding AddToShoppingList}"/>
+    </VerticalStackLayout>
+</ContentPage>
