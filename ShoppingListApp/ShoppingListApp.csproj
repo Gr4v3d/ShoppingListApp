@@ -72,7 +72,7 @@
 	  <MauiXaml Update="View\DishesView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\PopUp.xaml">
+	  <MauiXaml Update="View\ShopListPopUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\ShopListView.xaml">

@@ -1,34 +1,48 @@
-﻿using CommunityToolkit.Maui.Core;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using MauiApp2.View;
-using System;
-using System.Collections.Generic;
+using CommunityToolkit.Maui.Views;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
+using MauiApp2.Model;
 
 namespace MauiApp2.ViewModel;
 
-internal class ShopListViewModel : INotifyPropertyChanged
+public partial class ShopListViewModel : INotifyPropertyChanged
 {
-    private readonly IPopupService popupService;
+    public ShopListViewModel() 
+    {
+        var dbAccess = new DataBase();
+        var listOfDishes = dbAccess.GetShoppingList();
+        foreach ( var dish in listOfDishes)
+        {
+            var elements = dbAccess.GetShoppingListElements(dish.ShoppingListID);
+            foreach ( var element in elements)
+            {
+                ListOfIngerdients.Add(new Composition(dish, element));
+            }
+        }
+    }
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
+    internal List<Composition> ListOfIngerdients = new List<Composition>();
     public ICommand Guzik { get; }
 
-    public ShopListViewModel(IPopupService popupService)
+    [RelayCommand]
+    public void DisplayPopUp()
     {
-        this.popupService = popupService;
+        var popup = new ShopListPopUp();
+        Shell.Current.ShowPopup(popup);
     }
-    public ShopListViewModel()
+
+    internal class Composition
     {
-        Guzik = new AsyncRelayCommand(DisplayPopup);
-    }
-    private async Task DisplayPopup()
-    {
-        this.popupService.ShowPopup<PopUpViewModel>();
+        public ShoppingList Dish { get; set; }
+        public ShoppingListElement Element { get; set; }
+        public Composition(ShoppingList dish, ShoppingListElement element)
+        {
+            Dish = dish;
+            Element = element;
+        }
     }
 }

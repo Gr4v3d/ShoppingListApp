@@ -18,7 +18,7 @@ namespace MauiApp2
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-            builder.Services.AddTransientPopup<PopUp, PopUpViewModel>();
+            //builder.Services.AddTransientPopup<PopUp, PopUpViewModel>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

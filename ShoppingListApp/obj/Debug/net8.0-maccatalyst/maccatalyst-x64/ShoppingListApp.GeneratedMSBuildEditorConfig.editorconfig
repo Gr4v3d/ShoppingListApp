@@ -58,11 +58,11 @@ build_metadata.AdditionalFiles.ManifestResourceName = MauiApp2.View.DishesView.x
 build_metadata.AdditionalFiles.TargetPath = View\DishesView.xaml
 build_metadata.AdditionalFiles.RelativePath = View\DishesView.xaml
 
-[C:/Users/Piegzon/source/repos/ShoppingListApp/ShoppingListApp/View/PopUp.xaml]
+[C:/Users/Piegzon/source/repos/ShoppingListApp/ShoppingListApp/View/ShopListPopUp.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = MauiApp2.View.PopUp.xaml
-build_metadata.AdditionalFiles.TargetPath = View\PopUp.xaml
-build_metadata.AdditionalFiles.RelativePath = View\PopUp.xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp2.View.ShopListPopUp.xaml
+build_metadata.AdditionalFiles.TargetPath = View\ShopListPopUp.xaml
+build_metadata.AdditionalFiles.RelativePath = View\ShopListPopUp.xaml
 
 [C:/Users/Piegzon/source/repos/ShoppingListApp/ShoppingListApp/View/ShopListView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml

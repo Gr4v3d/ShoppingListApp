@@ -55,6 +55,10 @@ class DishAddViewModel : INotifyPropertyChanged
 
     private async Task DishAdd()
     {
+        if(DishName == null)
+        {
+            DishName = "Danie Bezimienne";
+        }
         db.AddDish(new Dish(DishName));
         var temp = Ingredients.ToList();
         foreach (IngredientList item in Ingredients)

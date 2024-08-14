@@ -43,6 +43,8 @@ class DishViewModel :INotifyPropertyChanged
     {
         try
         {
+            if (SelectedDish == null) 
+                throw new Exception("You didn't choose a dish to add to your list");
             var temp = Convert.ToDouble(PortionSize);
             db.AddShoppingList(new ShoppingList(SelectedDish.DishId,temp));
             SelectedDish = null;

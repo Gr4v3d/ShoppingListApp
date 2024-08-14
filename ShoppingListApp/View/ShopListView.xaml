@@ -4,7 +4,28 @@
              x:Class="MauiApp2.View.ShopListView"
              xmlns:viewModels="clr-namespace:MauiApp2.ViewModel"
              Title="ShopListView">
+    <ContentPage.BindingContext>
+        <viewModels:ShopListViewModel />
+    </ContentPage.BindingContext>
+    
     <VerticalStackLayout>
-        <Button Command="{Binding Guzik}"/>
+        <CollectionView ItemsSource="{Binding ListOfIngerdients}"
+                        SelectedItem="{Binding DisplayPopUpCommand, Mode=TwoWay}"
+                        SelectionMode="Single">
+            
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <HorizontalStackLayout>
+                        <Label Text="{Binding Dish.DishId}"/>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Command="{Binding DisplayPopUpCommand}"/>
     </VerticalStackLayout>
 </ContentPage>

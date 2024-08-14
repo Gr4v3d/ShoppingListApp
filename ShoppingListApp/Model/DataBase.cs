@@ -115,4 +115,16 @@ internal class DataBase
     {
         _connection.Insert(ingredientList);
     }
+
+    public List<ShoppingList> GetShoppingList()
+    {
+        var querry = _connection.Query<ShoppingList>("SELECT * FROM ShoppingList ORDER BY ShoppingListID DESC");
+        return querry.ToList();
+    }
+
+    public List<ShoppingListElement> GetShoppingListElements(int ID)
+    {
+        var querry = _connection.Query<ShoppingListElement>($"SELECT * FROM ShoppingListElement WHERE ShoppingListID = {ID}");
+        return querry.ToList();
+    }
 }
