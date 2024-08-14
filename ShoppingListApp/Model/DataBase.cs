@@ -1,5 +1,4 @@
 ﻿using SQLite;
-using System.Runtime.InteropServices;
 
 namespace MauiApp2.Model;
 
@@ -126,5 +125,17 @@ internal class DataBase
     {
         var querry = _connection.Query<ShoppingListElement>($"SELECT * FROM ShoppingListElement WHERE ShoppingListID = {ID}");
         return querry.ToList();
+    }
+
+    public Dish GetDish(int ID)
+    {
+        var querry = _connection.Query<Dish>($"SELECT * FROM Dish WHERE DishID = {ID}");
+        return querry.Single();
+    }
+
+    public IngredientList GetIngredient(int ID, string Name)
+    {
+        var querry = _connection.Query<IngredientList>($"SELECT * FROM IngredientList WHERE DishID = {ID} AND IngredientName = '{Name}'");
+        return querry.Single();
     }
 }

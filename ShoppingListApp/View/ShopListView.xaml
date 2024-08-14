@@ -20,7 +20,13 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <HorizontalStackLayout>
-                        <Label Text="{Binding Dish.DishId}"/>
+                        <Label Text="{Binding TheDish.DishName}"/>
+                        <Label Text="{Binding Ingredient.IngredientName}"/>
+                        <Label Text="Required: "/>
+                        <Label Text="{Binding RequiredAmount}"/>
+                        <Label Text="{Binding Ingredient.Measure}"/>
+                        <Label Text="You have:"/>
+                        <Label Text="{Binding IngredientCounter.IngredientAmountOwned}"/>
                     </HorizontalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

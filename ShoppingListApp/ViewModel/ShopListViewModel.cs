@@ -13,19 +13,22 @@ public partial class ShopListViewModel : INotifyPropertyChanged
     {
         var dbAccess = new DataBase();
         var listOfDishes = dbAccess.GetShoppingList();
-        foreach ( var dish in listOfDishes)
+        ListOfIngerdients = new List<Composition>();
+        foreach ( var position in listOfDishes)
         {
-            var elements = dbAccess.GetShoppingListElements(dish.ShoppingListID);
+            var dish = dbAccess.GetDish(position.DishId);
+            var elements = dbAccess.GetShoppingListElements(position.ShoppingListID);
             foreach ( var element in elements)
             {
-                ListOfIngerdients.Add(new Composition(dish, element));
+                var ingredient = dbAccess.GetIngredient(position.DishId,element.IngredientName);
+                ListOfIngerdients.Add(new Composition(position, element,dish,ingredient));
             }
         }
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    internal List<Composition> ListOfIngerdients = new List<Composition>();
+    public List<Composition> ListOfIngerdients { get; set; }
     public ICommand Guzik { get; }
 
     [RelayCommand]
@@ -35,14 +38,21 @@ public partial class ShopListViewModel : INotifyPropertyChanged
         Shell.Current.ShowPopup(popup);
     }
 
-    internal class Composition
+    public class Composition
     {
-        public ShoppingList Dish { get; set; }
-        public ShoppingListElement Element { get; set; }
-        public Composition(ShoppingList dish, ShoppingListElement element)
+        public ShoppingList NumberOnTheList { get; set; }
+        public ShoppingListElement IngredientCounter { get; set; }
+        public Dish TheDish { get; set; }
+        public IngredientList Ingredient { get; set; }
+        
+        public double RequiredAmount { get; set; }
+        public Composition(ShoppingList number, ShoppingListElement element, Dish dish, IngredientList ingredient)
         {
-            Dish = dish;
-            Element = element;
+            NumberOnTheList = number;
+            TheDish = dish;
+            IngredientCounter = element;
+            Ingredient = ingredient;
+            RequiredAmount = NumberOnTheList.PortionSize * Ingredient.IngredientCount;
         }
     }
 }
