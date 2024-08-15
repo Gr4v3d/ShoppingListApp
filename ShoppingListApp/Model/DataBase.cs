@@ -138,4 +138,15 @@ internal class DataBase
         var querry = _connection.Query<IngredientList>($"SELECT * FROM IngredientList WHERE DishID = {ID} AND IngredientName = '{Name}'");
         return querry.Single();
     }
+
+    public void ChangeAmountOwned(int ElementID,string Ingredient, double NewValue)
+    {
+        _connection.Query<ShoppingListElement>($"UPDATE ShoppingListElement SET IngredientAmountOwned = {NewValue} WHERE ShoppingListID = {ElementID} AND IngredientName = '{Ingredient}'");
+    }
+
+    public void RemoveDishFromShoppingList(int ID)
+    {
+        _connection.Query<ShoppingListElement>($"DELETE FROM ShoppingListElement WHERE ShoppingListID = {ID}");
+        _connection.Query<ShoppingList>($"DELETE FROM ShoppingList WHERE ShoppingListID = {ID}");
+    }
 }

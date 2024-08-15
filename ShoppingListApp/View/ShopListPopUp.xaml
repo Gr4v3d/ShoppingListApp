@@ -2,12 +2,50 @@
 <mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewModel="clr-namespace:MauiApp2.ViewModel"
              x:Class="MauiApp2.View.ShopListPopUp"
+             CanBeDismissedByTappingOutsideOfPopup="False"
              >
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <mct:Popup.Resources>
+        <Style x:Key="InvalidStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Red"/>
+        </Style>
+        <Style x:Key="ValidStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+    </mct:Popup.Resources>
+        <Frame>
+        <VerticalStackLayout>
+            <Label x:Name="Title"/>
+            <HorizontalStackLayout>
+                <Label Text="Wymagana ilość:"/>
+                <Label x:Name="Needed"/>
+                <Label x:Name="Measure"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label Text="Posiadana Ilość:"/>
+                <Entry Keyboard="Numeric" x:Name="Have">
+                    <Entry.Behaviors>
+                        <toolkit:NumericValidationBehavior
+                        InvalidStyle="{StaticResource InvalidStyle}"
+                        ValidStyle="{StaticResource ValidStyle}"
+                        Flags="ValidateOnValueChanged"
+                        MinimumValue="0"
+                        MaximumValue="10000.0"
+                        MaximumDecimalPlaces="3" />
+                    </Entry.Behaviors>
+                </Entry>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Button
+                    Text="Anuluj"
+                    Clicked="CancelClicked"/>
+                <Button
+                    Text="Potwierdź"
+                    Clicked="ConfirmClicked"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </Frame>
+       
 </mct:Popup>

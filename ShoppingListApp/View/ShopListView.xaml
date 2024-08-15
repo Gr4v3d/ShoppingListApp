@@ -5,13 +5,15 @@
              xmlns:viewModels="clr-namespace:MauiApp2.ViewModel"
              Title="ShopListView">
     <ContentPage.BindingContext>
-        <viewModels:ShopListViewModel />
+        <viewModels:ShopListViewModel/>
     </ContentPage.BindingContext>
-    
+
     <VerticalStackLayout>
         <CollectionView ItemsSource="{Binding ListOfIngerdients}"
-                        SelectedItem="{Binding DisplayPopUpCommand, Mode=TwoWay}"
-                        SelectionMode="Single">
+                        SelectedItem="{Binding SelectedElement, Mode=TwoWay}"
+                        SelectionMode="Single"
+                        SelectionChangedCommand="{Binding DisplayPopUpCommand}"                       
+                        >
             
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
