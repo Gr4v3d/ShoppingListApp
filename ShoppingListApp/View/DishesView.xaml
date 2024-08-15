@@ -6,13 +6,13 @@
              xmlns:viewModels="clr-namespace:MauiApp2.ViewModel"
              
              x:Class="MauiApp2.View.DishesView"
-             Title="DishesView">
+             Title="Wybierz dania do dodania do listy!">
     
     <ContentPage.BindingContext>
         <viewModels:DishViewModel/>
     </ContentPage.BindingContext>
-
-    <VerticalStackLayout>
+    <ScrollView>
+    <VerticalStackLayout Spacing="10" Padding="10">
         <CollectionView ItemsSource="{Binding Dishes}"
                         SelectedItem="{Binding SelectedDish, Mode=TwoWay}"
                         SelectionMode="Single"
@@ -44,5 +44,7 @@
             <Entry Text="{Binding PortionSize}" Grid.Row="1" Grid.Column="1"/>
         </Grid>
         <Button Text="Dodaj danie do listy zakupów" Command="{Binding AddToShoppingList}"/>
-    </VerticalStackLayout>
+        <Button Text="Usuń danie z bazy danych" Background="Red" Command="{Binding RemoveDishPermanentlyCommand}"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

@@ -4,11 +4,10 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Messaging;
-using Windows.ApplicationModel.VoiceCommands;
 using MauiApp2.Messages;
 namespace MauiApp2.ViewModel;
 
-class DishViewModel :INotifyPropertyChanged
+partial class DishViewModel :INotifyPropertyChanged
 {
     internal DataBase db = new DataBase();
 
@@ -61,7 +60,13 @@ class DishViewModel :INotifyPropertyChanged
         try
         {
             if (SelectedDish == null) 
-                throw new Exception("You didn't choose a dish to add to your list");
+                throw new Exception("Nie wybrałeś dania do dodania");
+            if (!Double.TryParse(PortionSize, out var d))
+                throw new Exception("Rozmiar porcji musi być liczbą");
+            if (Convert.ToDouble(PortionSize) <=0 )
+                throw new Exception("Nie da się fizycznie zrobić ujemnej ilości jedzenia");
+            if (PortionSize == null)
+                PortionSize = "1";
             var temp = Convert.ToDouble(PortionSize);
             db.AddShoppingList(new ShoppingList(SelectedDish.DishId,temp));
             SelectedDish = null;
@@ -73,6 +78,15 @@ class DishViewModel :INotifyPropertyChanged
         }
         PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs("SelectedDish"));
         PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs("PortionSize"));
+        WeakReferenceMessenger.Default.Send(new NewElementsInShoppingList("Reload"));
+    }
+    [RelayCommand]
+
+    public void RemoveDishPermanently()
+    {
+        db.RemoveDishDB(SelectedDish.DishId);
+        ReloadList();
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Dishes)));
         WeakReferenceMessenger.Default.Send(new NewElementsInShoppingList("Reload"));
     }
 }

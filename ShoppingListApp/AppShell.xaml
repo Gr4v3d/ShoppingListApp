@@ -5,16 +5,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:view="clr-namespace:MauiApp2.View"
     Shell.FlyoutBehavior="Disabled"
-    Title="Shopping List App">
+    Title="Twoja lista zakupów">
     <TabBar>
         <ShellContent
-            Title="Shopping List"
+            Title="Lista zakupów"
             ContentTemplate="{DataTemplate view:ShopListView}"/>
         <ShellContent
-            Title="Dishes"
+            Title="Znane dania"
             ContentTemplate="{DataTemplate view:DishesView}"/>
         <ShellContent
-            Title="Add new Dish"
+            Title="Dodaj nowe danie"
             ContentTemplate="{DataTemplate view:DishAddView}"/>
     </TabBar>
 </Shell>

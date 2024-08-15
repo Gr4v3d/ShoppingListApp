@@ -149,4 +149,12 @@ internal class DataBase
         _connection.Query<ShoppingListElement>($"DELETE FROM ShoppingListElement WHERE ShoppingListID = {ID}");
         _connection.Query<ShoppingList>($"DELETE FROM ShoppingList WHERE ShoppingListID = {ID}");
     }
+
+    public void RemoveDishDB(int ID)
+    {
+        _connection.Query<Dish>($"DELETE FROM Dish WHERE DishID = {ID}");
+        _connection.Query<IngredientList>($"DELETE FROM IngredientList WHERE DishID = {ID}");
+        _connection.Query<ShoppingListElement>($"DELETE FROM ShoppingListElement WHERE ShoppingListID = (SELECT ShoppingListID FROM ShoppingList WHERE DishID = {ID})");
+        _connection.Query<ShoppingList>($"DELETE FROM ShoppingList WHERE DishID = {ID}");
+    }
 }

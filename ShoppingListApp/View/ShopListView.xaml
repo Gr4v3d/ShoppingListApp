@@ -3,37 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp2.View.ShopListView"
              xmlns:viewModels="clr-namespace:MauiApp2.ViewModel"
-             Title="ShopListView">
+             Title="Dodaj to co już masz!">
     <ContentPage.BindingContext>
         <viewModels:ShopListViewModel/>
     </ContentPage.BindingContext>
-
-    <VerticalStackLayout>
-        <CollectionView ItemsSource="{Binding ListOfIngerdients}"
-                        SelectedItem="{Binding SelectedElement, Mode=TwoWay}"
-                        SelectionMode="Single"
-                        SelectionChangedCommand="{Binding DisplayPopUpCommand}"                       
-                        >
+    <ScrollView>
+        <VerticalStackLayout>
+            <CollectionView ItemsSource="{Binding ListOfIngerdients}"
+                            SelectedItem="{Binding SelectedElement, Mode=TwoWay}"
+                            SelectionMode="Single"
+                            SelectionChangedCommand="{Binding DisplayPopUpCommand}"                       
+                            >
             
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
-            </CollectionView.ItemsLayout>
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <HorizontalStackLayout>
-                        <Label Text="{Binding TheDish.DishName}"/>
-                        <Label Text="{Binding Ingredient.IngredientName}"/>
-                        <Label Text="Required: "/>
-                        <Label Text="{Binding RequiredAmount}"/>
-                        <Label Text="{Binding Ingredient.Measure}"/>
-                        <Label Text="You have:"/>
-                        <Label Text="{Binding IngredientCounter.IngredientAmountOwned}"/>
-                    </HorizontalStackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout>
+                            <Label Text="{Binding TheDish.DishName}"/>
+                            <Label Text="{Binding Ingredient.IngredientName}"/>
+                            <Label Text="Required: "/>
+                            <Label Text="{Binding RequiredAmount}"/>
+                            <Label Text="{Binding Ingredient.Measure}"/>
+                            <Label Text="You have:"/>
+                            <Label Text="{Binding IngredientCounter.IngredientAmountOwned}"/>
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-        <Button Command="{Binding DisplayPopUpCommand}"/>
-    </VerticalStackLayout>
+            <Button Command="{Binding DisplayPopUpCommand}"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

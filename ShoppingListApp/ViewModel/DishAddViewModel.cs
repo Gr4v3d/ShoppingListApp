@@ -38,6 +38,18 @@ class DishAddViewModel : INotifyPropertyChanged
 
     private async Task AddIngredients()
     {
+        try
+        {
+            if (IngredientName == null || IngredientName == "") throw new Exception("Nie podano nazwy składniku");
+            if (IngredientAmount == "" || IngredientAmount == null) throw new Exception("Nie podano wymaganej ilości składniku");
+            if (!Double.TryParse(IngredientAmount,out var d)) throw new Exception("Podana ilość składniku nie jest liczbą");
+        }
+        catch(Exception ex)
+        {
+            IngredientName = ex.Message;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IngredientName)));
+            return;
+        }
         var currentDish = 0;
         try {  currentDish = db.GetLastDishId(); }
         catch {}
@@ -58,7 +70,9 @@ class DishAddViewModel : INotifyPropertyChanged
     {
         if(DishName == null)
         {
-            DishName = "Danie Bezimienne";
+            IngredientName = "Nie podano nazwy dania";
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IngredientName)));
+            return; 
         }
         db.AddDish(new Dish(DishName));
         var temp = Ingredients.ToList();
