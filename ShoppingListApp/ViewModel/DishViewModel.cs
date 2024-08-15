@@ -5,6 +5,8 @@ using System.ComponentModel;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using MauiApp2.Messages;
+using MauiApp2.View;
+using CommunityToolkit.Maui.Views;
 namespace MauiApp2.ViewModel;
 
 partial class DishViewModel :INotifyPropertyChanged
@@ -50,7 +52,7 @@ partial class DishViewModel :INotifyPropertyChanged
 
     public async Task PortionClear()
     {
-        PortionSize = "";
+        PortionSize = "1";
         PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs("SelectedDish"));
         PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs("PortionSize"));
     }
@@ -74,7 +76,8 @@ partial class DishViewModel :INotifyPropertyChanged
         }
         catch (Exception ex)
         {
-            PortionSize = ex.Message;
+            var popup = new AlertPopUp(ex.Message);
+            Shell.Current.ShowPopup(popup);
         }
         PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs("SelectedDish"));
         PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs("PortionSize"));

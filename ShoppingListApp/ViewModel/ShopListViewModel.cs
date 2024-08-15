@@ -50,13 +50,22 @@ public partial class ShopListViewModel : INotifyPropertyChanged
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    public string IngName { get; set; }
     public List<Composition> ListOfIngerdients { get; set; }
 
     [RelayCommand]
     public async Task DisplayPopUp()
     {
+        if(SelectedElement == null) return;
         popup = new ShopListPopUp(SelectedElement);
         await Shell.Current.ShowPopupAsync(popup);
+    }
+    [RelayCommand]
+
+    public void RemoveChosenDishFromList()
+    {
+        var dbAccess = new DataBase();
+        dbAccess.RemoveDishFromShoppingList(SelectedElement.NumberOnTheList.ShoppingListID);
+        ReloadShoppingList();
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ListOfIngerdients)));
     }
 }

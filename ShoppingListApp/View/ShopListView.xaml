@@ -7,12 +7,11 @@
     <ContentPage.BindingContext>
         <viewModels:ShopListViewModel/>
     </ContentPage.BindingContext>
-    <ScrollView>
+    <ScrollView MinimumWidthRequest="500" MaximumWidthRequest="1000">
         <VerticalStackLayout>
             <CollectionView ItemsSource="{Binding ListOfIngerdients}"
                             SelectedItem="{Binding SelectedElement, Mode=TwoWay}"
-                            SelectionMode="Single"
-                            SelectionChangedCommand="{Binding DisplayPopUpCommand}"                       
+                            SelectionMode="Single"                       
                             >
             
                 <CollectionView.ItemsLayout>
@@ -22,19 +21,24 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <HorizontalStackLayout>
-                            <Label Text="{Binding TheDish.DishName}"/>
-                            <Label Text="{Binding Ingredient.IngredientName}"/>
-                            <Label Text="Required: "/>
-                            <Label Text="{Binding RequiredAmount}"/>
-                            <Label Text="{Binding Ingredient.Measure}"/>
-                            <Label Text="You have:"/>
+                            <Label Text="{Binding TheDish.DishName}" Margin="0,0,40,0"/>
+                            <Label Text="{Binding Ingredient.IngredientName}" Margin="10,0"/>
+                            <Label Text="Required: " Margin="10,0"/>
+                            <Label Text="{Binding RequiredAmount}" Margin="0,0,5,0"/>
+                            <Label Text="{Binding Ingredient.Measure}" Margin="0,0,15,0"/>
+                            <Label Text="You have:" Margin="0,0,5,0"/>
                             <Label Text="{Binding IngredientCounter.IngredientAmountOwned}"/>
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
-            <Button Command="{Binding DisplayPopUpCommand}"/>
+                <HorizontalStackLayout>
+                <Button Command="{Binding DisplayPopUpCommand}"
+                        Text="Zmień wybraną wartość"/>
+                <Button Command="{Binding RemoveChosenDishFromListCommand}"
+                        BackgroundColor="Red"
+                        Text="Usuń z listy"/>
+            </HorizontalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

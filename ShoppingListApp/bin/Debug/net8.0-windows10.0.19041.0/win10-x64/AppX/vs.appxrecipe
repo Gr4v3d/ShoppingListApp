@@ -29,13 +29,13 @@
     <AppXManifest Include="C:\Users\Piegzon\source\repos\ShoppingListApp\ShoppingListApp\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-08-15T17:37:35.467</Modified>
+      <Modified>2024-08-15T18:33:51.114</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Piegzon\source\repos\ShoppingListApp\ShoppingListApp\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2024-08-15T13:09:23.149</Modified>
+      <Modified>2024-08-15T18:32:47.765</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Piegzon\source\repos\ShoppingListApp\ShoppingListApp\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\ShoppingListApp.runtimeconfig.json">
       <PackagePath>ShoppingListApp.runtimeconfig.json</PackagePath>
@@ -43,11 +43,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Piegzon\source\repos\ShoppingListApp\ShoppingListApp\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\ShoppingListApp.dll">
       <PackagePath>ShoppingListApp.dll</PackagePath>
-      <Modified>2024-08-15T17:37:34.556</Modified>
+      <Modified>2024-08-15T18:33:50.749</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Piegzon\source\repos\ShoppingListApp\ShoppingListApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>ShoppingListApp.exe</PackagePath>
-      <Modified>2024-08-15T17:37:34.599</Modified>
+      <Modified>2024-08-15T18:33:50.754</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Piegzon\source\repos\ShoppingListApp\ShoppingListApp\Resources\Raw\AboutAssets.txt">
       <PackagePath>AboutAssets.txt</PackagePath>
@@ -287,7 +287,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Piegzon\source\repos\ShoppingListApp\ShoppingListApp\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\ShoppingListApp.deps.json">
       <PackagePath>ShoppingListApp.deps.json</PackagePath>
-      <Modified>2024-08-15T13:09:22.866</Modified>
+      <Modified>2024-08-15T18:32:47.268</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Piegzon\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.19041.31\lib\net6.0\Microsoft.Windows.SDK.NET.dll">
       <PackagePath>Microsoft.Windows.SDK.NET.dll</PackagePath>

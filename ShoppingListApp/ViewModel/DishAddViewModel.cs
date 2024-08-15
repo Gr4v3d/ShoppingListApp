@@ -3,8 +3,11 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 namespace MauiApp2.ViewModel;
+
+using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.Messaging;
 using MauiApp2.Messages;
+using MauiApp2.View;
 using System.ComponentModel;
 
 class DishAddViewModel : INotifyPropertyChanged
@@ -46,8 +49,8 @@ class DishAddViewModel : INotifyPropertyChanged
         }
         catch(Exception ex)
         {
-            IngredientName = ex.Message;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IngredientName)));
+            var popup = new AlertPopUp(ex.Message);
+            Shell.Current.ShowPopup(popup);
             return;
         }
         var currentDish = 0;
@@ -68,20 +71,26 @@ class DishAddViewModel : INotifyPropertyChanged
 
     private async Task DishAdd()
     {
-        if(DishName == null)
+        try
         {
-            IngredientName = "Nie podano nazwy dania";
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IngredientName)));
-            return; 
+            if (DishName == null)
+                throw new Exception("Nie podano nazwy dania");
+            if (Ingredients.Count == 0)
+                throw new Exception("Powietrze na talerzu nie liczy się jako danie\nProszę dodać składniki");
+            db.AddDish(new Dish(DishName));
+            var temp = Ingredients.ToList();
+            foreach (IngredientList item in Ingredients)
+            {
+                db.AddIngredientList(item);
+            }
+            WeakReferenceMessenger.Default.Send(new NewDishAdded("Reload"));
+            CompleteReset();
         }
-        db.AddDish(new Dish(DishName));
-        var temp = Ingredients.ToList();
-        foreach (IngredientList item in Ingredients)
+        catch(Exception ex)
         {
-            db.AddIngredientList(item);
+            var popup = new AlertPopUp(ex.Message);
+            Shell.Current.ShowPopup(popup);
         }
-        WeakReferenceMessenger.Default.Send(new NewDishAdded("Reload"));
-        CompleteReset();
     }
     private void CompleteReset()
     {
@@ -103,5 +112,4 @@ class DishAddViewModel : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs("IngredientName"));
         PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs("IngredientMeasure"));
     }
-    //Zrób osobno kontrolki do dodawania komponentów, a poniżej ich liste. I jak klikasz "dodaj składnik" do jest dodawany do listy
 }

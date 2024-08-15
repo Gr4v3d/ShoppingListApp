@@ -42,6 +42,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = MauiApp2.Resources.Styles.
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
+[C:/Users/Piegzon/source/repos/ShoppingListApp/ShoppingListApp/View/AlertPopUp.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp2.View.AlertPopUp.xaml
+build_metadata.AdditionalFiles.TargetPath = View\AlertPopUp.xaml
+build_metadata.AdditionalFiles.RelativePath = View\AlertPopUp.xaml
+
 [C:/Users/Piegzon/source/repos/ShoppingListApp/ShoppingListApp/View/DishAddView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp2.View.DishAddView.xaml
