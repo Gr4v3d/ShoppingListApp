@@ -35,6 +35,15 @@ partial class DishViewModel :INotifyPropertyChanged
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Dishes)));
             });
         });
+        WeakReferenceMessenger.Default.Register<DeletionMessage>(this, (r, m) =>
+        {
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                RemoveDishPermanently();
+                ReloadList();
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Dishes)));
+            });
+        });
         AddToShoppingList = new AsyncRelayCommand(AddToShopList);
         ClearPortionSize = new AsyncRelayCommand(PortionClear);
         ReloadList();
@@ -85,6 +94,11 @@ partial class DishViewModel :INotifyPropertyChanged
     }
     [RelayCommand]
 
+    public void RemoveDishButtonPressed()
+    {
+        var popup = new DeletionConfirmationPopUp();
+        Shell.Current.ShowPopup(popup);
+    }
     public void RemoveDishPermanently()
     {
         db.RemoveDishDB(SelectedDish.DishId);

@@ -44,7 +44,7 @@
             <Entry Text="{Binding PortionSize}" Grid.Row="1" Grid.Column="1"/>
         </Grid>
         <Button Text="Dodaj danie do listy zakupów" Command="{Binding AddToShoppingList}"/>
-        <Button Text="Usuń danie z bazy danych" Background="Red" Command="{Binding RemoveDishPermanentlyCommand}"/>
+        <Button Text="Usuń danie z bazy danych" Background="Red" Command="{Binding RemoveDishButtonPressedCommand}"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

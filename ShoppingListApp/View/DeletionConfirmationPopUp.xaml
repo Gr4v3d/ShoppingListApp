@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp2.View.DeletionConfirmationPopUp"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+    <Frame>
+        <VerticalStackLayout HorizontalOptions="Center">
+            <Label 
+                Text="Czy jesteś pewny że chcesz usunąć to danie ?"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <Label Text="Tego procesu nie da się cofnąć!"/>
+            <Button BackgroundColor="Red"
+                        Text="Tak, na pewno chcę go usunąć!"
+                    Clicked="Button_Clicked"/>
+        </VerticalStackLayout>
+    </Frame>
+</toolkit:Popup>

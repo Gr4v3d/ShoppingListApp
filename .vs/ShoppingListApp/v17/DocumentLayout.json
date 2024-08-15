@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Piegzon\\source\\repos\\ShoppingListApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{17E4AB4A-1EEB-4C97-BED4-5A5DD41921A1}|ShoppingListApp\\ShoppingListApp.csproj|c:\\users\\piegzon\\source\\repos\\shoppinglistapp\\shoppinglistapp\\view\\deletionconfirmationpopup.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17E4AB4A-1EEB-4C97-BED4-5A5DD41921A1}|ShoppingListApp\\ShoppingListApp.csproj|solutionrelative:shoppinglistapp\\view\\deletionconfirmationpopup.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17E4AB4A-1EEB-4C97-BED4-5A5DD41921A1}|ShoppingListApp\\ShoppingListApp.csproj|c:\\users\\piegzon\\source\\repos\\shoppinglistapp\\shoppinglistapp\\view\\deletionconfirmationpopup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{17E4AB4A-1EEB-4C97-BED4-5A5DD41921A1}|ShoppingListApp\\ShoppingListApp.csproj|solutionrelative:shoppinglistapp\\view\\deletionconfirmationpopup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{17E4AB4A-1EEB-4C97-BED4-5A5DD41921A1}|ShoppingListApp\\ShoppingListApp.csproj|c:\\users\\piegzon\\source\\repos\\shoppinglistapp\\shoppinglistapp\\viewmodel\\dishaddviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{17E4AB4A-1EEB-4C97-BED4-5A5DD41921A1}|ShoppingListApp\\ShoppingListApp.csproj|solutionrelative:shoppinglistapp\\viewmodel\\dishaddviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{17E4AB4A-1EEB-4C97-BED4-5A5DD41921A1}|ShoppingListApp\\ShoppingListApp.csproj|c:\\users\\piegzon\\source\\repos\\shoppinglistapp\\shoppinglistapp\\view\\alertpopup.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17E4AB4A-1EEB-4C97-BED4-5A5DD41921A1}|ShoppingListApp\\ShoppingListApp.csproj|solutionrelative:shoppinglistapp\\view\\alertpopup.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17E4AB4A-1EEB-4C97-BED4-5A5DD41921A1}|ShoppingListApp\\ShoppingListApp.csproj|c:\\users\\piegzon\\source\\repos\\shoppinglistapp\\shoppinglistapp\\view\\alertpopup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{17E4AB4A-1EEB-4C97-BED4-5A5DD41921A1}|ShoppingListApp\\ShoppingListApp.csproj|solutionrelative:shoppinglistapp\\view\\alertpopup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17E4AB4A-1EEB-4C97-BED4-5A5DD41921A1}|ShoppingListApp\\ShoppingListApp.csproj|c:\\users\\piegzon\\source\\repos\\shoppinglistapp\\shoppinglistapp\\model\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17E4AB4A-1EEB-4C97-BED4-5A5DD41921A1}|ShoppingListApp\\ShoppingListApp.csproj|solutionrelative:shoppinglistapp\\model\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{17E4AB4A-1EEB-4C97-BED4-5A5DD41921A1}|ShoppingListApp\\ShoppingListApp.csproj|c:\\users\\piegzon\\source\\repos\\shoppinglistapp\\shoppinglistapp\\viewmodel\\dishviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17E4AB4A-1EEB-4C97-BED4-5A5DD41921A1}|ShoppingListApp\\ShoppingListApp.csproj|solutionrelative:shoppinglistapp\\viewmodel\\dishviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{17E4AB4A-1EEB-4C97-BED4-5A5DD41921A1}|ShoppingListApp\\ShoppingListApp.csproj|c:\\users\\piegzon\\source\\repos\\shoppinglistapp\\shoppinglistapp\\view\\shoplistpopup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{17E4AB4A-1EEB-4C97-BED4-5A5DD41921A1}|ShoppingListApp\\ShoppingListApp.csproj|solutionrelative:shoppinglistapp\\view\\shoplistpopup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{17E4AB4A-1EEB-4C97-BED4-5A5DD41921A1}|ShoppingListApp\\ShoppingListApp.csproj|c:\\users\\piegzon\\source\\repos\\shoppinglistapp\\shoppinglistapp\\view\\shoplistpopup.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17E4AB4A-1EEB-4C97-BED4-5A5DD41921A1}|ShoppingListApp\\ShoppingListApp.csproj|solutionrelative:shoppinglistapp\\view\\shoplistpopup.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{17E4AB4A-1EEB-4C97-BED4-5A5DD41921A1}|ShoppingListApp\\ShoppingListApp.csproj|c:\\users\\piegzon\\source\\repos\\shoppinglistapp\\shoppinglistapp\\model\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17E4AB4A-1EEB-4C97-BED4-5A5DD41921A1}|ShoppingListApp\\ShoppingListApp.csproj|solutionrelative:shoppinglistapp\\model\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,53 +39,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DishAddViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Piegzon\\source\\repos\\ShoppingListApp\\ShoppingListApp\\ViewModel\\DishAddViewModel.cs",
-              "RelativeDocumentMoniker": "ShoppingListApp\\ViewModel\\DishAddViewModel.cs",
-              "ToolTip": "C:\\Users\\Piegzon\\source\\repos\\ShoppingListApp\\ShoppingListApp\\ViewModel\\DishAddViewModel.cs",
-              "RelativeToolTip": "ShoppingListApp\\ViewModel\\DishAddViewModel.cs",
-              "ViewState": "AQIAAD8AAAAAAAAAAAAiwE4AAABqAAAA",
+              "Title": "DeletionConfirmationPopUp.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Piegzon\\source\\repos\\ShoppingListApp\\ShoppingListApp\\View\\DeletionConfirmationPopUp.xaml.cs",
+              "RelativeDocumentMoniker": "ShoppingListApp\\View\\DeletionConfirmationPopUp.xaml.cs",
+              "ToolTip": "C:\\Users\\Piegzon\\source\\repos\\ShoppingListApp\\ShoppingListApp\\View\\DeletionConfirmationPopUp.xaml.cs",
+              "RelativeToolTip": "ShoppingListApp\\View\\DeletionConfirmationPopUp.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T18:27:56.204Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AlertPopUp.xaml",
-              "DocumentMoniker": "C:\\Users\\Piegzon\\source\\repos\\ShoppingListApp\\ShoppingListApp\\View\\AlertPopUp.xaml",
-              "RelativeDocumentMoniker": "ShoppingListApp\\View\\AlertPopUp.xaml",
-              "ToolTip": "C:\\Users\\Piegzon\\source\\repos\\ShoppingListApp\\ShoppingListApp\\View\\AlertPopUp.xaml",
-              "RelativeToolTip": "ShoppingListApp\\View\\AlertPopUp.xaml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-15T18:15:35.53Z",
+              "WhenOpened": "2024-08-15T20:10:12.892Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AlertPopUp.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Piegzon\\source\\repos\\ShoppingListApp\\ShoppingListApp\\View\\AlertPopUp.xaml.cs",
-              "RelativeDocumentMoniker": "ShoppingListApp\\View\\AlertPopUp.xaml.cs",
-              "ToolTip": "C:\\Users\\Piegzon\\source\\repos\\ShoppingListApp\\ShoppingListApp\\View\\AlertPopUp.xaml.cs",
-              "RelativeToolTip": "ShoppingListApp\\View\\AlertPopUp.xaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T18:25:46.579Z",
+              "Title": "DeletionConfirmationPopUp.xaml",
+              "DocumentMoniker": "C:\\Users\\Piegzon\\source\\repos\\ShoppingListApp\\ShoppingListApp\\View\\DeletionConfirmationPopUp.xaml",
+              "RelativeDocumentMoniker": "ShoppingListApp\\View\\DeletionConfirmationPopUp.xaml",
+              "ToolTip": "C:\\Users\\Piegzon\\source\\repos\\ShoppingListApp\\ShoppingListApp\\View\\DeletionConfirmationPopUp.xaml",
+              "RelativeToolTip": "ShoppingListApp\\View\\DeletionConfirmationPopUp.xaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-15T20:10:09.699Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ShopListPopUp.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Piegzon\\source\\repos\\ShoppingListApp\\ShoppingListApp\\View\\ShopListPopUp.xaml.cs",
-              "RelativeDocumentMoniker": "ShoppingListApp\\View\\ShopListPopUp.xaml.cs",
-              "ToolTip": "C:\\Users\\Piegzon\\source\\repos\\ShoppingListApp\\ShoppingListApp\\View\\ShopListPopUp.xaml.cs",
-              "RelativeToolTip": "ShoppingListApp\\View\\ShopListPopUp.xaml.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAYwA0AAAAYAAAA",
+              "DocumentIndex": 2,
+              "Title": "DishAddViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Piegzon\\source\\repos\\ShoppingListApp\\ShoppingListApp\\ViewModel\\DishAddViewModel.cs",
+              "RelativeDocumentMoniker": "ShoppingListApp\\ViewModel\\DishAddViewModel.cs",
+              "ToolTip": "C:\\Users\\Piegzon\\source\\repos\\ShoppingListApp\\ShoppingListApp\\ViewModel\\DishAddViewModel.cs",
+              "RelativeToolTip": "ShoppingListApp\\ViewModel\\DishAddViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T17:56:12.473Z",
+              "WhenOpened": "2024-08-15T20:09:21.429Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DishViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Piegzon\\source\\repos\\ShoppingListApp\\ShoppingListApp\\ViewModel\\DishViewModel.cs",
+              "RelativeDocumentMoniker": "ShoppingListApp\\ViewModel\\DishViewModel.cs",
+              "ToolTip": "C:\\Users\\Piegzon\\source\\repos\\ShoppingListApp\\ShoppingListApp\\ViewModel\\DishViewModel.cs",
+              "RelativeToolTip": "ShoppingListApp\\ViewModel\\DishViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-15T19:54:46.741Z",
               "EditorCaption": ""
             },
             {
@@ -103,7 +103,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "DataBase.cs",
               "DocumentMoniker": "C:\\Users\\Piegzon\\source\\repos\\ShoppingListApp\\ShoppingListApp\\Model\\DataBase.cs",
               "RelativeDocumentMoniker": "ShoppingListApp\\Model\\DataBase.cs",

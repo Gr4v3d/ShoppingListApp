@@ -63,6 +63,7 @@ public partial class ShopListViewModel : INotifyPropertyChanged
 
     public void RemoveChosenDishFromList()
     {
+        if(SelectedElement == null) return;
         var dbAccess = new DataBase();
         dbAccess.RemoveDishFromShoppingList(SelectedElement.NumberOnTheList.ShoppingListID);
         ReloadShoppingList();

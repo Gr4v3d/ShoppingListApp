@@ -14,6 +14,9 @@
     <MauiXaml Update="View\AlertPopUp.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="View\DeletionConfirmationPopUp.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="View\DishAddView.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
