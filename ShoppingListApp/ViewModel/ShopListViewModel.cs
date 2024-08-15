@@ -19,6 +19,13 @@ public partial class ShopListViewModel : INotifyPropertyChanged
                 PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(nameof(ListOfIngerdients)));
             });
             });
+        WeakReferenceMessenger.Default.Register<NewElementsInShoppingList>(this, (r, m) => {
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                ReloadShoppingList();
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ListOfIngerdients)));
+            });
+        });
         ReloadShoppingList();
     }
 

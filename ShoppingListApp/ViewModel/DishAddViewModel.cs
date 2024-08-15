@@ -3,7 +3,8 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 namespace MauiApp2.ViewModel;
-using Microsoft.Maui.Controls;
+using CommunityToolkit.Mvvm.Messaging;
+using MauiApp2.Messages;
 using System.ComponentModel;
 
 class DishAddViewModel : INotifyPropertyChanged
@@ -64,7 +65,8 @@ class DishAddViewModel : INotifyPropertyChanged
         foreach (IngredientList item in Ingredients)
         {
             db.AddIngredientList(item);
-        }       
+        }
+        WeakReferenceMessenger.Default.Send(new NewDishAdded("Reload"));
         CompleteReset();
     }
     private void CompleteReset()
