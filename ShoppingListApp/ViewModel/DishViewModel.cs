@@ -2,11 +2,11 @@
 using MauiApp2.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Windows.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using MauiApp2.Messages;
 using MauiApp2.View;
 using CommunityToolkit.Maui.Views;
+
 namespace MauiApp2.ViewModel;
 
 public partial class DishViewModel : INotifyPropertyChanged
@@ -28,15 +28,6 @@ public partial class DishViewModel : INotifyPropertyChanged
         {
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                ReloadList();
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Dishes)));
-            });
-        });
-        WeakReferenceMessenger.Default.Register<DeletionMessage>(this, (r, m) =>
-        {
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                RemoveDishPermanently();
                 ReloadList();
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Dishes)));
             });
@@ -69,26 +60,27 @@ public partial class DishViewModel : INotifyPropertyChanged
     {
         try
         {
-            if (SelectedDish == null) 
+            if (SelectedDish == null)
                 throw new Exception("Nie wybrałeś dania do dodania");
+            
             if (!Double.TryParse(PortionSize, out var d))
                 throw new Exception("Rozmiar porcji musi być liczbą");
-            if (Convert.ToDouble(PortionSize) <=0 )
+            
+            if (Convert.ToDouble(PortionSize) <= 0)
                 throw new Exception("Nie da się fizycznie zrobić ujemnej ilości jedzenia");
+            
             if (PortionSize == null)
                 PortionSize = "1";
-            var temp = Convert.ToDouble(PortionSize);
-            db.AddShoppingList(new ShoppingList(SelectedDish.DishId,temp));
-            SelectedDish = null;
-            PortionSize = "";
-            PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs("SelectedDish"));
-            PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs("PortionSize"));
         }
         catch (Exception ex)
         {
             var popup = new AlertPopUp(ex.Message);
             Shell.Current.ShowPopup(popup);
         }
+        
+        var temp = Convert.ToDouble(PortionSize);
+        db.AddShoppingList(new ShoppingList(SelectedDish.DishId,temp));
+                
         WeakReferenceMessenger.Default.Send(new NewElementsInShoppingList("Reload"));
         Reset();
     }
