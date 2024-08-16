@@ -15,16 +15,15 @@
             <Setter Property="TextColor" Value="Black"/>
         </Style>
     </mct:Popup.Resources>
-        <Frame>
-        <VerticalStackLayout>
+        <Frame HeightRequest="250" WidthRequest="300">
+        <VerticalStackLayout Spacing="10">
             <Label x:Name="Title"/>
             <HorizontalStackLayout>
                 <Label Text="Wymagana ilość:"/>
                 <Label x:Name="Needed"/>
                 <Label x:Name="Measure"/>
             </HorizontalStackLayout>
-            <HorizontalStackLayout>
-                <Label Text="Posiadana Ilość:"/>
+            <Label Text="Posiadana Ilość:"/>
                 <Entry Keyboard="Numeric" x:Name="Have">
                     <Entry.Behaviors>
                         <toolkit:NumericValidationBehavior
@@ -36,16 +35,15 @@
                         MaximumDecimalPlaces="3" />
                     </Entry.Behaviors>
                 </Entry>
-            </HorizontalStackLayout>
-            <HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Center">
                 <Button
                     Text="Potwierdź"
                     Clicked="ConfirmClicked"
-                    BackgroundColor="Green"/>
+                    BackgroundColor="Green" Margin="10"/>
                 <Button
                     Text="Anuluj"
                     Clicked="CancelClicked"
-                    BackgroundColor="Red"/>
+                    BackgroundColor="Red" Margin="10"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>
     </Frame>

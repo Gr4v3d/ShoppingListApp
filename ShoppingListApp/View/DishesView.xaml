@@ -6,36 +6,38 @@
              xmlns:viewModels="clr-namespace:MauiApp2.ViewModel"
              
              x:Class="MauiApp2.View.DishesView"
-             Title="Wybierz dania do dodania do listy!">
+             Title="Wybierz dania do dodania do listy!"
+    BackgroundColor="BlanchedAlmond">
     
     <ContentPage.BindingContext>
         <viewModels:DishViewModel/>
     </ContentPage.BindingContext>
-    <ScrollView>
+    <ScrollView MaximumWidthRequest="700">
     <VerticalStackLayout Spacing="10" Padding="10">
         <CollectionView ItemsSource="{Binding Dishes}"
                         SelectedItem="{Binding SelectedDish, Mode=TwoWay}"
                         SelectionMode="Single"
-                        SelectionChangedCommand="{Binding ClearPortionSize}">
+                        SelectionChangedCommand="{Binding ClearPortionSize}"
+                        MaximumWidthRequest="700">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <HorizontalStackLayout>
-                        <Label Text="{Binding DishId}"/>
-                        <Label Text="{Binding DishName}"/>
+                        <Label Text="{Binding DishId}" Padding="5,10"/>
+                            <Label Text="{Binding DishName}" Padding="5,10"/>
                     </HorizontalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Grid>
+            <Grid MaximumWidthRequest="700">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Label Text="Wybrane danie:" Grid.Row="0" Grid.Column="0"/>
@@ -43,8 +45,8 @@
             <Label Text="{Binding SelectedDish.DishName}" Grid.Row="1" Grid.Column="0"/>
             <Entry Text="{Binding PortionSize}" Grid.Row="1" Grid.Column="1"/>
         </Grid>
-        <Button Text="Dodaj danie do listy zakupów" Command="{Binding AddToShoppingList}"/>
-        <Button Text="Usuń danie z bazy danych" Background="Red" Command="{Binding RemoveDishButtonPressedCommand}"/>
+        <Button Text="Dodaj danie do listy zakupów" Command="{Binding AddToShoppingList}" BackgroundColor="DodgerBlue"/>
+        <Button Text="Usuń danie z bazy danych" Background="Salmon" Command="{Binding RemoveDishButtonPressedCommand}"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

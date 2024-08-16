@@ -5,9 +5,8 @@
              xmlns:viewModel="clr-namespace:MauiApp2.ViewModel"
              x:Class="MauiApp2.App">
     <Application.Resources>
-        
+
         <ResourceDictionary>
-            <viewModel:ShopListViewModel x:Key="sharedShoppingListViewModel"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />

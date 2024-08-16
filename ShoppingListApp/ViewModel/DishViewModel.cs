@@ -96,14 +96,17 @@ partial class DishViewModel :INotifyPropertyChanged
 
     public void RemoveDishButtonPressed()
     {
+        if (SelectedDish == null) return;
         var popup = new DeletionConfirmationPopUp();
         Shell.Current.ShowPopup(popup);
     }
     public void RemoveDishPermanently()
     {
         db.RemoveDishDB(SelectedDish.DishId);
+        SelectedDish = null;
         ReloadList();
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Dishes)));
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedDish)));
         WeakReferenceMessenger.Default.Send(new NewElementsInShoppingList("Reload"));
     }
 }

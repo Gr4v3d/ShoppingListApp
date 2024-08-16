@@ -5,7 +5,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:view="clr-namespace:MauiApp2.View"
     Shell.FlyoutBehavior="Disabled"
-    Title="Twoja lista zakupów">
+    Title="Twoja lista zakupów" 
+    BackgroundColor="BlanchedAlmond"
+    
+    Shell.TabBarBackgroundColor="LightSalmon"
+    Shell.TabBarForegroundColor="Black"
+    Shell.TabBarUnselectedColor="White"
+    Shell.TabBarTitleColor="White"
+    >
     <TabBar>
         <ShellContent
             Title="Lista zakupów"

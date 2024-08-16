@@ -3,15 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp2.View.ShopListView"
              xmlns:viewModels="clr-namespace:MauiApp2.ViewModel"
-             Title="Dodaj to co już masz!">
+             Title="Dodaj to co już masz!"
+             BackgroundColor="BlanchedAlmond">
     <ContentPage.BindingContext>
         <viewModels:ShopListViewModel/>
     </ContentPage.BindingContext>
-    <ScrollView MinimumWidthRequest="500" MaximumWidthRequest="1000">
+    <ScrollView HorizontalOptions="Center">
         <VerticalStackLayout>
             <CollectionView ItemsSource="{Binding ListOfIngerdients}"
                             SelectedItem="{Binding SelectedElement, Mode=TwoWay}"
-                            SelectionMode="Single"                       
+                            SelectionMode="Single"  
+                            MaximumWidthRequest="700"
                             >
             
                 <CollectionView.ItemsLayout>
@@ -20,8 +22,8 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <HorizontalStackLayout>
-                            <Label Text="{Binding TheDish.DishName}" Margin="0,0,40,0"/>
+                        <HorizontalStackLayout HorizontalOptions="Center" Padding="10">
+                            <Label Text="{Binding TheDish.DishName}" Margin="0,0,10,0"/>
                             <Label Text="{Binding Ingredient.IngredientName}" Margin="10,0"/>
                             <Label Text="Required: " Margin="10,0"/>
                             <Label Text="{Binding RequiredAmount}" Margin="0,0,5,0"/>
@@ -32,12 +34,13 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-                <HorizontalStackLayout>
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="10" Margin="0,10,0,0">
                 <Button Command="{Binding DisplayPopUpCommand}"
-                        Text="Zmień wybraną wartość"/>
+                        Text="Zmień wybraną wartość" WidthRequest="200"
+                        BackgroundColor="DodgerBlue"/>
                 <Button Command="{Binding RemoveChosenDishFromListCommand}"
-                        BackgroundColor="Red"
-                        Text="Usuń z listy"/>
+                        BackgroundColor="Salmon"
+                        Text="Usuń z listy" WidthRequest="200"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>
     </ScrollView>

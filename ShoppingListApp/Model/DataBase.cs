@@ -152,9 +152,13 @@ internal class DataBase
 
     public void RemoveDishDB(int ID)
     {
-        _connection.Query<Dish>($"DELETE FROM Dish WHERE DishID = {ID}");
-        _connection.Query<IngredientList>($"DELETE FROM IngredientList WHERE DishID = {ID}");
-        _connection.Query<ShoppingListElement>($"DELETE FROM ShoppingListElement WHERE ShoppingListID = (SELECT ShoppingListID FROM ShoppingList WHERE DishID = {ID})");
+        var querry = _connection.Query<ShoppingList>($"SELECT ShoppingListID FROM ShoppingList WHERE DishID = {ID}").ToArray();
+        foreach ( var item in querry)
+        {
+            _connection.Query<ShoppingListElement>($"DELETE FROM ShoppingListElement WHERE ShoppingListID = {item.DishId}");
+        }
         _connection.Query<ShoppingList>($"DELETE FROM ShoppingList WHERE DishID = {ID}");
+        _connection.Query<IngredientList>($"DELETE FROM IngredientList WHERE DishID = {ID}");
+        _connection.Query<Dish>($"DELETE FROM Dish WHERE DishID = {ID}");
     }
 }

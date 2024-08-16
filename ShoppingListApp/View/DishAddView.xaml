@@ -4,7 +4,8 @@
              xmlns:viewModels="clr-namespace:MauiApp2.ViewModel"          
              x:Class="MauiApp2.View.DishAddView"             
              Title="Tutaj możesz dodać nowe dania!" 
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             BackgroundColor="BlanchedAlmond">
     <ContentPage.Resources>
         <Style x:Key="InvalidStyle" TargetType="Entry">
             <Setter Property="TextColor" Value="Red"/>
@@ -51,17 +52,18 @@
             </HorizontalStackLayout>
             <HorizontalStackLayout HorizontalOptions="Center" Margin="0,10" Spacing="50">
                 <Button WidthRequest="200"
-    Text="Dodaj nowy składnik:" Command="{Binding AddIngredientToList}"/>
+    Text="Dodaj nowy składnik:" Command="{Binding AddIngredientToList}" BackgroundColor="DodgerBlue"/>
                 <Button WidthRequest="200"
     Text="Usuń wybrany składnik" Command="{Binding RemoveIngredientFromList}"
-                        BackgroundColor="Red"/>
+                        BackgroundColor="Salmon"/>
             </HorizontalStackLayout>
             <!--Wypis wszystkich obecnysz składników dania -->
         
             <CollectionView x:Name="ingredientCollection"
                             ItemsSource="{Binding Ingredients, Mode=TwoWay}"
                             SelectedItem="{Binding SelectedIngredient}"
-                            SelectionMode="Single">
+                            SelectionMode="Single"
+                            MaximumWidthRequest="700">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
                 </CollectionView.ItemsLayout>
@@ -78,7 +80,7 @@
         
         <!-- Dodawanie dania do bazy danych-->
             <Button
-                Text="Dodaj danie!" Command="{Binding AddDish}" Margin="0,10"/>
+                Text="Dodaj danie!" Command="{Binding AddDish}" Margin="0,10" BackgroundColor="DodgerBlue" FontSize="24" TextColor="White"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
