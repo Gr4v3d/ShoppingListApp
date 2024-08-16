@@ -117,7 +117,7 @@ internal class DataBase
 
     public List<ShoppingList> GetShoppingList()
     {
-        var querry = _connection.Query<ShoppingList>("SELECT * FROM ShoppingList ORDER BY ShoppingListID DESC");
+        var querry = _connection.Query<ShoppingList>("SELECT * FROM ShoppingList ORDER BY ShoppingListID ASC");
         return querry.ToList();
     }
 

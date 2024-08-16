@@ -82,14 +82,14 @@ partial class DishViewModel :INotifyPropertyChanged
             db.AddShoppingList(new ShoppingList(SelectedDish.DishId,temp));
             SelectedDish = null;
             PortionSize = "";
+            PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs("SelectedDish"));
+            PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs("PortionSize"));
         }
         catch (Exception ex)
         {
             var popup = new AlertPopUp(ex.Message);
             Shell.Current.ShowPopup(popup);
         }
-        PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs("SelectedDish"));
-        PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs("PortionSize"));
         WeakReferenceMessenger.Default.Send(new NewElementsInShoppingList("Reload"));
     }
     [RelayCommand]

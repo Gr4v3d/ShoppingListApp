@@ -23,6 +23,10 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <HorizontalStackLayout HorizontalOptions="Center" Padding="10">
+                            <Label Text="#"/>
+                            <Label Text="{Binding NumberOnTheList.ShoppingListID}" Margin="0,0,10,0"/>
+                            <Label Text="{Binding NumberOnTheList.PortionSize}"/>
+                            <Label Text="x" Margin="0,0,5,0"/>
                             <Label Text="{Binding TheDish.DishName}" Margin="0,0,10,0"/>
                             <Label Text="{Binding Ingredient.IngredientName}" Margin="10,0"/>
                             <Label Text="Required: " Margin="10,0"/>
@@ -42,6 +46,23 @@
                         BackgroundColor="Salmon"
                         Text="Usuń z listy" WidthRequest="200"/>
             </HorizontalStackLayout>
+
+            <Label HorizontalOptions="Center" Text="Gotowe dania:"
+                   Margin=" 10,10,10,0"/>
+            <CollectionView ItemsSource="{Binding ReadyDishes}"
+                MaximumWidthRequest="700"
+                            Margin="10,10"
+                >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
+                            <Label Text="#"/> 
+                            <Label Text="{Binding NumberOnTheList.ShoppingListID}" Margin="0,0,10,0"/>
+                            <Label Text="{Binding TheDish.DishName}"/>
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

@@ -30,7 +30,7 @@ public partial class ShopListViewModel : INotifyPropertyChanged
     }
 
     private void ReloadShoppingList()
-    {
+   {
         var dbAccess = new DataBase();
         var listOfDishes = dbAccess.GetShoppingList();
         ListOfIngerdients = new List<Composition>();
@@ -44,19 +44,35 @@ public partial class ShopListViewModel : INotifyPropertyChanged
                 ListOfIngerdients.Add(new Composition(position, element, dish, ingredient));
             }
         }
+        ReadyDishes = CheckForReady(ListOfIngerdients);
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ReadyDishes)));
     }
-    public ShopListPopUp popup {  get; set; }
+
     public Composition SelectedElement { get; set; }
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
     public List<Composition> ListOfIngerdients { get; set; }
 
+    public List<Composition> ReadyDishes { get; set; }
+
+    public List<Composition> CheckForReady(List<Composition> Original)
+    {
+        var toCheck = new List<Composition>(Original);
+        var alreadyChecked = new List<Composition>(toCheck);
+        foreach(var item in toCheck)
+        {
+            if (item.IngredientCounter.IngredientAmountOwned < item.RequiredAmount)
+                alreadyChecked.RemoveAll(x => x.NumberOnTheList.ShoppingListID == item.NumberOnTheList.ShoppingListID);            
+        }
+        return alreadyChecked.DistinctBy(x => x.NumberOnTheList.ShoppingListID).ToList();
+    }
+
     [RelayCommand]
     public async Task DisplayPopUp()
     {
         if(SelectedElement == null) return;
-        popup = new ShopListPopUp(SelectedElement);
+        var popup = new ShopListPopUp(SelectedElement);
         await Shell.Current.ShowPopupAsync(popup);
     }
     [RelayCommand]
