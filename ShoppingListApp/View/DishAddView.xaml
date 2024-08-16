@@ -6,6 +6,7 @@
              Title="Tutaj możesz dodać nowe dania!" 
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              BackgroundColor="BlanchedAlmond">
+    
     <ContentPage.Resources>
         <Style x:Key="InvalidStyle" TargetType="Entry">
             <Setter Property="TextColor" Value="Red"/>
@@ -14,73 +15,130 @@
             <Setter Property="TextColor" Value="Black"/>
         </Style>
     </ContentPage.Resources>
+    
     <!-- Binding context -->
     <ContentPage.BindingContext>
         <viewModels:DishAddViewModel />
     </ContentPage.BindingContext>
 
-    <!-- Nazwa Dania-->
-    <ScrollView Padding="10,0" >
-        <VerticalStackLayout HorizontalOptions="Center">
-            <HorizontalStackLayout Spacing="10" Margin="0,10">
+    <ScrollView Padding="10,0" HorizontalOptions="Center">
+        <VerticalStackLayout HorizontalOptions="Center" WidthRequest="600" MaximumWidthRequest="600">
+            
+            <!-- Wpis nazwy nowego dania-->
+            <Grid MaximumWidthRequest="600">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Row 0-->
                 <Label 
                     Text="Nazwa nowego dania:"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center"/>
-                <Entry x:Name="DishName" Text="{Binding DishName, Mode=TwoWay}" MinimumWidthRequest="300"/>
-            </HorizontalStackLayout>
-            <!-- Dodawanie składników do dania-->
-            <HorizontalStackLayout Spacing="10" Margin="0,10" HorizontalOptions="Fill">
-                <Label Text="Składnik: "/>
-                <Entry x:Name="IngredientName" Text="{Binding IngredientName, Mode=TwoWay}" WidthRequest="300"/>
-            </HorizontalStackLayout>
-            <HorizontalStackLayout Spacing="10" Margin="0,10" HorizontalOptions="Start">
-                <Label Text="Ilość: "/>
-                <Entry Keyboard="Numeric" WidthRequest="120" Text="{Binding IngredientAmount, Mode=TwoWay}">
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="0"/>
+
+                <Entry x:Name="DishName" 
+                       Text="{Binding DishName, Mode=TwoWay}" 
+                       Grid.Column="3"
+                       Grid.ColumnSpan="4"
+                        Grid.Row="0"/>
+                
+                <!-- Row 1-->
+                <Label Text="Składnik: "
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="3"/>
+
+                <Entry x:Name="IngredientName" Text="{Binding IngredientName, Mode=TwoWay}"
+                       Grid.Row="1"
+                       Grid.Column="3"
+                       Grid.ColumnSpan="4"/>
+                
+                <!-- Row 2 -->
+                <Label Text="Ilość: "
+                       Grid.Row="2"
+                       Grid.Column="0"/>
+
+                <Entry Keyboard="Numeric" Text="{Binding IngredientAmount, Mode=TwoWay}"
+                    Grid.Row="2"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="2">
                     <Entry.Behaviors>
                         <toolkit:NumericValidationBehavior
-                            InvalidStyle="{StaticResource InvalidStyle}"
-                            ValidStyle="{StaticResource ValidStyle}"
-                            Flags="ValidateOnValueChanged"
-                            MinimumValue="0"
-                            MaximumValue="10000.0"
-                            MaximumDecimalPlaces="3" />
+            InvalidStyle="{StaticResource InvalidStyle}"
+            ValidStyle="{StaticResource ValidStyle}"
+            Flags="ValidateOnValueChanged"
+            MinimumValue="0"
+            MaximumValue="10000.0"
+            MaximumDecimalPlaces="3" />
                     </Entry.Behaviors>
                 </Entry>
-                <Label Text="Miara: "/>
-                <Entry WidthRequest="100" Text="{Binding IngredientMeasure, Mode=TwoWay}"/>
-            </HorizontalStackLayout>
+
+                <Label Text="Miara: " 
+                       Grid.Row="2"
+                       Grid.Column="4"/>
+
+                <Entry Text="{Binding IngredientMeasure, Mode=TwoWay}"
+                       Grid.Row="2"
+                       Grid.Column="5"
+                       Grid.ColumnSpan="2"/>
+                
+            </Grid>
+            
+            <!-- Guziki dodadawnia/usuwania składników-->
             <HorizontalStackLayout HorizontalOptions="Center" Margin="0,10" Spacing="50">
+                
                 <Button WidthRequest="200"
-    Text="Dodaj nowy składnik:" Command="{Binding AddIngredientToList}" BackgroundColor="DodgerBlue"/>
+                    Text="Dodaj nowy składnik:" Command="{Binding AddIngredientToList}" BackgroundColor="DodgerBlue"/>
+                
                 <Button WidthRequest="200"
-    Text="Usuń wybrany składnik" Command="{Binding RemoveIngredientFromList}"
-                        BackgroundColor="Salmon"/>
+                    Text="Usuń wybrany składnik" Command="{Binding RemoveIngredientFromList}"
+                    BackgroundColor="Salmon"/>
+            
             </HorizontalStackLayout>
-            <!--Wypis wszystkich obecnysz składników dania -->
-        
+            
+            <!--Wypis wszystkich obecnysz składników dania -->        
             <CollectionView x:Name="ingredientCollection"
                             ItemsSource="{Binding Ingredients, Mode=TwoWay}"
                             SelectedItem="{Binding SelectedIngredient}"
                             SelectionMode="Single"
                             MaximumWidthRequest="700">
+                
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
                 </CollectionView.ItemsLayout>
+                
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout Orientation="Horizontal" Spacing="10">
+                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                            
                             <Label Text="{Binding IngredientName}" x:Name="IngrName"/>
+                            
                             <Label Text="{Binding IngredientCount}" x:Name="IngrAmount"/>
+                            
                             <Label Text="{Binding Measure}" x:Name="IngrMeasure"/>
-                        </StackLayout>
+                        
+                        </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
+                
             </CollectionView>
         
         <!-- Dodawanie dania do bazy danych-->
             <Button
                 Text="Dodaj danie!" Command="{Binding AddDish}" Margin="0,10" BackgroundColor="DodgerBlue" FontSize="24" TextColor="White"/>
+        
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

@@ -13,7 +13,7 @@
             var window = base.CreateWindow(activationState);
 
             #if WINDOWS
-                  window.Width = 500;
+                  window.Width = 800;
                   window.Height = 700;
             #endif
 

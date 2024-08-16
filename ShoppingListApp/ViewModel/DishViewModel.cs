@@ -9,15 +9,11 @@ using MauiApp2.View;
 using CommunityToolkit.Maui.Views;
 namespace MauiApp2.ViewModel;
 
-partial class DishViewModel :INotifyPropertyChanged
+public partial class DishViewModel : INotifyPropertyChanged
 {
     internal DataBase db = new DataBase();
 
     public event PropertyChangedEventHandler PropertyChanged;
-
-    public ICommand ClearPortionSize { get; }
-
-    public ICommand AddToShoppingList { get; }
 
     public Dish SelectedDish { get; set; }
 
@@ -25,6 +21,7 @@ partial class DishViewModel :INotifyPropertyChanged
 
     public ObservableCollection<Dish> Dishes { get; set; }
 
+    public DeletionConfirmationPopUp PopUp {get; set;}
     public DishViewModel()
     {
         WeakReferenceMessenger.Default.Register<NewDishAdded>(this, (r, m) =>
@@ -44,8 +41,6 @@ partial class DishViewModel :INotifyPropertyChanged
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Dishes)));
             });
         });
-        AddToShoppingList = new AsyncRelayCommand(AddToShopList);
-        ClearPortionSize = new AsyncRelayCommand(PortionClear);
         ReloadList();
     }
 
@@ -57,16 +52,20 @@ partial class DishViewModel :INotifyPropertyChanged
         {
             Dishes.Add(dish);
         }
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Dishes)));
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedDish)));
     }
 
-    public async Task PortionClear()
+    public void Reset()
     {
-        PortionSize = "1";
+        SelectedDish = null;
+        PortionSize = "";
         PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs("SelectedDish"));
         PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs("PortionSize"));
     }
 
-    public async Task AddToShopList()
+    [RelayCommand]
+    public void AddToShopList()
     {
         try
         {
@@ -91,22 +90,23 @@ partial class DishViewModel :INotifyPropertyChanged
             Shell.Current.ShowPopup(popup);
         }
         WeakReferenceMessenger.Default.Send(new NewElementsInShoppingList("Reload"));
+        Reset();
     }
     [RelayCommand]
 
     public void RemoveDishButtonPressed()
     {
         if (SelectedDish == null) return;
-        var popup = new DeletionConfirmationPopUp();
-        Shell.Current.ShowPopup(popup);
+        PopUp = new DeletionConfirmationPopUp(this);
+        Shell.Current.ShowPopup(PopUp);
     }
+
+    [RelayCommand]
     public void RemoveDishPermanently()
     {
         db.RemoveDishDB(SelectedDish.DishId);
-        SelectedDish = null;
+        Reset();
         ReloadList();
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Dishes)));
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedDish)));
-        WeakReferenceMessenger.Default.Send(new NewElementsInShoppingList("Reload"));
+        PopUp.Close();
     }
 }

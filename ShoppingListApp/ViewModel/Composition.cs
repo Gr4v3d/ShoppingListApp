@@ -4,11 +4,17 @@ namespace MauiApp2.ViewModel;
 public class Composition
 {
     public ShoppingList NumberOnTheList { get; set; }
+    
     public ShoppingListElement IngredientCounter { get; set; }
+    
     public Dish TheDish { get; set; }
+    
     public IngredientList Ingredient { get; set; }
 
     public double RequiredAmount { get; set; }
+    
+    public double Difference {  get; set; }
+    
     public Composition(ShoppingList number, ShoppingListElement element, Dish dish, IngredientList ingredient)
     {
         NumberOnTheList = number;
@@ -16,5 +22,6 @@ public class Composition
         IngredientCounter = element;
         Ingredient = ingredient;
         RequiredAmount = NumberOnTheList.PortionSize * Ingredient.IngredientCount;
+        Difference = RequiredAmount - IngredientCounter.IngredientAmountOwned;
     }
 }

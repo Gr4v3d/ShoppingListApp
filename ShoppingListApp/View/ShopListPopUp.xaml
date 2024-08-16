@@ -6,7 +6,8 @@
              xmlns:viewModel="clr-namespace:MauiApp2.ViewModel"
              x:Class="MauiApp2.View.ShopListPopUp"
              CanBeDismissedByTappingOutsideOfPopup="False"
-             >
+             x:DataType="viewModel:ShopListViewModel">
+    
     <mct:Popup.Resources>
         <Style x:Key="InvalidStyle" TargetType="Entry">
             <Setter Property="TextColor" Value="Red"/>
@@ -15,16 +16,24 @@
             <Setter Property="TextColor" Value="Black"/>
         </Style>
     </mct:Popup.Resources>
-        <Frame HeightRequest="250" WidthRequest="300">
+        
+    <Frame HeightRequest="250" WidthRequest="300">
         <VerticalStackLayout Spacing="10">
-            <Label x:Name="Title"/>
+            
+            <!-- Nazwa składnika-->
+            <Label Text="{Binding SelectedElement.TheDish.DishName}"/>
+            
+            <!-- Ile tego składnika potrzeba-->
             <HorizontalStackLayout>
                 <Label Text="Wymagana ilość:"/>
-                <Label x:Name="Needed"/>
-                <Label x:Name="Measure"/>
+                <Label Text="{Binding SelectedElement.RequiredAmount}"/>
+                <Label Text="{Binding SelectedElement.Ingredient.Measure}"/>
             </HorizontalStackLayout>
-            <Label Text="Posiadana Ilość:"/>
-                <Entry Keyboard="Numeric" x:Name="Have">
+            
+                <!-- Pole służące do wpisania posiadanej ilości składnika-->
+                <Label Text="Posiadana Ilość:"/>
+            
+                <Entry Keyboard="Numeric" Text="{Binding PopUpEntry, Mode=TwoWay}">
                     <Entry.Behaviors>
                         <toolkit:NumericValidationBehavior
                         InvalidStyle="{StaticResource InvalidStyle}"
@@ -35,15 +44,20 @@
                         MaximumDecimalPlaces="3" />
                     </Entry.Behaviors>
                 </Entry>
+            
+            <!-- Guziki potwierdzenia lub odrzucenia zmian-->
             <HorizontalStackLayout HorizontalOptions="Center">
+                
                 <Button
                     Text="Potwierdź"
-                    Clicked="ConfirmClicked"
-                    BackgroundColor="Green" Margin="10"/>
+                    BackgroundColor="Green" Margin="10"
+                    Command="{Binding ChangeAmountOwnedCommand}"/>
+                
                 <Button
                     Text="Anuluj"
                     Clicked="CancelClicked"
                     BackgroundColor="Red" Margin="10"/>
+            
             </HorizontalStackLayout>
         </VerticalStackLayout>
     </Frame>

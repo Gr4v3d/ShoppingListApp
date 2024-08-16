@@ -5,16 +5,19 @@
              xmlns:viewModels="clr-namespace:MauiApp2.ViewModel"
              Title="Dodaj to co już masz!"
              BackgroundColor="BlanchedAlmond">
+    
     <ContentPage.BindingContext>
         <viewModels:ShopListViewModel/>
     </ContentPage.BindingContext>
+    
     <ScrollView HorizontalOptions="Center">
         <VerticalStackLayout>
+            
+            <!-- Wszystkie składniki znajdujące się na liście zakupów-->
             <CollectionView ItemsSource="{Binding ListOfIngerdients}"
                             SelectedItem="{Binding SelectedElement, Mode=TwoWay}"
                             SelectionMode="Single"  
-                            MaximumWidthRequest="700"
-                            >
+                            MaximumWidthRequest="700">
             
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
@@ -29,30 +32,40 @@
                             <Label Text="x" Margin="0,0,5,0"/>
                             <Label Text="{Binding TheDish.DishName}" Margin="0,0,10,0"/>
                             <Label Text="{Binding Ingredient.IngredientName}" Margin="10,0"/>
-                            <Label Text="Required: " Margin="10,0"/>
+                            <Label Text="Potrzeba: " Margin="10,0"/>
                             <Label Text="{Binding RequiredAmount}" Margin="0,0,5,0"/>
                             <Label Text="{Binding Ingredient.Measure}" Margin="0,0,15,0"/>
-                            <Label Text="You have:" Margin="0,0,5,0"/>
-                            <Label Text="{Binding IngredientCounter.IngredientAmountOwned}"/>
+                            <Label Text="Masz:" Margin="0,0,5,0"/>
+                            <Label Text="{Binding IngredientCounter.IngredientAmountOwned}" Margin="0,0,10,0"/>
+                            <Label Text="Brakuje jeszcze:" Margin="0,0,5,0"/>
+                            <Label Text="{Binding Difference}"/>
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-                <HorizontalStackLayout HorizontalOptions="Center" Spacing="10" Margin="0,10,0,0">
+            
+            <!-- Guziki -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10" Margin="0,10,0,0">
+            
+                <!-- Guzik otwierający popup do zmiany wartości wybranego składniku z listy-->
                 <Button Command="{Binding DisplayPopUpCommand}"
                         Text="Zmień wybraną wartość" WidthRequest="200"
                         BackgroundColor="DodgerBlue"/>
+                
+                <!-- Guzik usuwający danie z listy zakupów-->
                 <Button Command="{Binding RemoveChosenDishFromListCommand}"
                         BackgroundColor="Salmon"
                         Text="Usuń z listy" WidthRequest="200"/>
+            
             </HorizontalStackLayout>
 
+            <!-- Wypis wszystkich gotowych dań-->
             <Label HorizontalOptions="Center" Text="Gotowe dania:"
                    Margin=" 10,10,10,0"/>
             <CollectionView ItemsSource="{Binding ReadyDishes}"
                 MaximumWidthRequest="700"
-                            Margin="10,10"
-                >
+                            Margin="10,10">
+                
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
@@ -62,6 +75,7 @@
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
+            
             </CollectionView>
         </VerticalStackLayout>
     </ScrollView>

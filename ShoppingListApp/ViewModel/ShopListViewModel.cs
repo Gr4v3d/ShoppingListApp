@@ -12,18 +12,17 @@ public partial class ShopListViewModel : INotifyPropertyChanged
 {
     public ShopListViewModel() 
     {
+        PopUp = new ShopListPopUp(this);
         WeakReferenceMessenger.Default.Register<ShoppingListValueChanged>(this, (r, m) => {
             MainThread.BeginInvokeOnMainThread(() =>
             {
                 ReloadShoppingList();
-                PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(nameof(ListOfIngerdients)));
             });
             });
         WeakReferenceMessenger.Default.Register<NewElementsInShoppingList>(this, (r, m) => {
             MainThread.BeginInvokeOnMainThread(() =>
             {
                 ReloadShoppingList();
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ListOfIngerdients)));
             });
         });
         ReloadShoppingList();
@@ -46,8 +45,10 @@ public partial class ShopListViewModel : INotifyPropertyChanged
         }
         ReadyDishes = CheckForReady(ListOfIngerdients);
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ReadyDishes)));
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ListOfIngerdients)));
     }
 
+    ShopListPopUp PopUp { get; set; }
     public Composition SelectedElement { get; set; }
 
     public event PropertyChangedEventHandler? PropertyChanged;
@@ -55,6 +56,8 @@ public partial class ShopListViewModel : INotifyPropertyChanged
     public List<Composition> ListOfIngerdients { get; set; }
 
     public List<Composition> ReadyDishes { get; set; }
+
+    public string PopUpEntry { get; set; }
 
     public List<Composition> CheckForReady(List<Composition> Original)
     {
@@ -71,9 +74,9 @@ public partial class ShopListViewModel : INotifyPropertyChanged
     [RelayCommand]
     public async Task DisplayPopUp()
     {
+        PopUp = new ShopListPopUp(this);
         if(SelectedElement == null) return;
-        var popup = new ShopListPopUp(SelectedElement);
-        await Shell.Current.ShowPopupAsync(popup);
+        await Shell.Current.ShowPopupAsync(PopUp);
     }
     [RelayCommand]
 
@@ -83,6 +86,24 @@ public partial class ShopListViewModel : INotifyPropertyChanged
         var dbAccess = new DataBase();
         dbAccess.RemoveDishFromShoppingList(SelectedElement.NumberOnTheList.ShoppingListID);
         ReloadShoppingList();
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ListOfIngerdients)));
+    }
+
+    [RelayCommand]
+
+    public void ChangeAmountOwned()
+    {
+        try
+        {
+            SelectedElement.IngredientCounter.IngredientAmountOwned = Convert.ToDouble(PopUpEntry);
+        }
+        catch
+        {
+            var poper = new AlertPopUp("Proszę podać liczbę");
+            return;
+        }
+        var dbAccess = new DataBase();
+        dbAccess.ChangeAmountOwned(SelectedElement.NumberOnTheList.ShoppingListID, SelectedElement.Ingredient.IngredientName, SelectedElement.IngredientCounter.IngredientAmountOwned);
+        PopUp.Close();
+        ReloadShoppingList();
     }
 }

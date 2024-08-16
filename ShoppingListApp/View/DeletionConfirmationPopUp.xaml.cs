@@ -1,18 +1,11 @@
-using CommunityToolkit.Mvvm.Messaging;
-using MauiApp2.Messages;
-
+using MauiApp2.ViewModel;
 namespace MauiApp2.View;
 
 public partial class DeletionConfirmationPopUp
 {
-	public DeletionConfirmationPopUp()
+	public DeletionConfirmationPopUp(DishViewModel context)
 	{
+		BindingContext = context;
 		InitializeComponent();
 	}
-
-    private void Button_Clicked(object sender, EventArgs e)
-    {
-		WeakReferenceMessenger.Default.Send(new DeletionMessage("Dump it"));
-		Close();
-    }
 }
