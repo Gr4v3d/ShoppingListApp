@@ -76,6 +76,7 @@ public partial class DishViewModel : INotifyPropertyChanged
         {
             var popup = new AlertPopUp(ex.Message);
             Shell.Current.ShowPopup(popup);
+            return;
         }
         
         var temp = Convert.ToDouble(PortionSize);
@@ -100,5 +101,6 @@ public partial class DishViewModel : INotifyPropertyChanged
         Reset();
         ReloadList();
         PopUp.Close();
+        WeakReferenceMessenger.Default.Send(new NewElementsInShoppingList("Reload"));
     }
 }

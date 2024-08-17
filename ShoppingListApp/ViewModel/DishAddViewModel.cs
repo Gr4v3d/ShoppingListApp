@@ -60,6 +60,7 @@ class DishAddViewModel : INotifyPropertyChanged
             Shell.Current.ShowPopup(popup);
             return;
         }
+<<<<<<< Updated upstream
         
         var currentDish = 0;
         //Jeśli w bazie danych nie ma żadnych dań wyrzuciłby błąd, dlatego jest w try/catch
@@ -68,6 +69,9 @@ class DishAddViewModel : INotifyPropertyChanged
         
         //Stworzenie nowego obiektu składnika i dodania go do listy
         var ingList = new IngredientList(currentDish + 1,IngredientName,Convert.ToDouble(IngredientAmount),IngredientMeasure);
+=======
+        var ingList = new IngredientList(0,IngredientName,Convert.ToDouble(IngredientAmount),IngredientMeasure);
+>>>>>>> Stashed changes
         Ingredients.Add(ingList);
         
         IngredientInputReset();
@@ -94,12 +98,17 @@ class DishAddViewModel : INotifyPropertyChanged
             
             //Dodanie do bazy danych
             db.AddDish(new Dish(DishName));
+<<<<<<< Updated upstream
             
             var temp = Ingredients.ToList();
             
             //Dodawanie składników do bazy danych
+=======
+            var dishID = db.GetLastDishId();
+>>>>>>> Stashed changes
             foreach (IngredientList item in Ingredients)
             {
+                item.DishId = dishID;
                 db.AddIngredientList(item);
             }
             
